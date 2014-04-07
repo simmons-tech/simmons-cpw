@@ -10,8 +10,9 @@ var STARTED = "S";
 
 $(document).ready(function() {
     var errorP = $('#error-msg');
-    var numToursSpan = $('#num-tours');
+    var tourNumSpans = $('.tour-num');
 
+    // Four "states" of the page
     var noDataDiv = $('#no-data');    
     var noRequestsDiv = $('#no-requests');
     var unclaimedDiv = $('#unclaimed-request');
@@ -83,15 +84,22 @@ $(document).ready(function() {
 
 	if (!latest_request || latest_request['status'] == STARTED) {
 	    noRequestsDiv.removeClass("hidden");
+
+	    if (latest_request) {
+		$('#latest_start_time').text(latest_request['start_time']);
+	    }
 	    // This will be tour (num_so_far + 1)
 	    numRequests += 1;
 	} else if (latest_request['status'] == REQUESTED) {
+	    $('#unclaimed_request_time').text(latest_request['request_time']);	    
 	    unclaimedDiv.removeClass("hidden");	    
 	} else if (latest_request['status'] == CLAIMED) {
+	    $('#unstarted_request_time').text(latest_request['request_time']);
+	    $('#unstarted_claim_time').text(latest_request['claim_time']);	    	    	    
 	    unstartedDiv.removeClass("hidden");	    	    
 	}
 	
-	numToursSpan.text(numRequests);
+	tourNumSpans.text(numRequests);
     }
     
     var loadData = function() {
