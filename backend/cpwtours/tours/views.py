@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 
 from django.shortcuts import render
@@ -38,7 +39,7 @@ def request_tour(request):
         message = "Last tour hasn't started yet!"
         new_request = None
     else:
-        new_request = TourRequest()
+        new_request = TourRequest(request_time = datetime.now())
         new_request.save()
         success = True
         message = "Tour successfully requested"

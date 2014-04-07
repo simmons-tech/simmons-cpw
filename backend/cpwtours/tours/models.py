@@ -17,7 +17,7 @@ class TourRequest(models.Model):
                               choices = STATUS_CHOICES,
                               default = REQUESTED)
 
-    request_time = models.DateTimeField(auto_now_add=True)
+    request_time = models.DateTimeField()
     claim_time = models.DateTimeField(blank=True, null = True, default = None)
     start_time = models.DateTimeField(blank=True, null = True, default = None)
     
@@ -38,9 +38,12 @@ class TourRequest(models.Model):
 
     def start_tour(self):
         if self.status == TourRequest.REQUESTED:
-            self.claime_time = datetime.now()
+            self.claim_time = datetime.now()
         if self.status == TourRequest.STARTED:
             raise ValueError("Latest tour request already started")
         self.start_time = datetime.now()
         self.status = TourRequest.STARTED
         self.save()
+
+    def __str__(self):
+        return "Tour Request - %s [%s]" % (self.request_time.strftime("%a %I:%M%p"), self.get_status_display())
