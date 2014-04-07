@@ -22,25 +22,25 @@ class TourRequest(models.Model):
     start_time = models.DateTimeField(blank=True, null = True, default = None)
     
     def is_unclaimed(self):
-        return self.status == REQUESTED
+        return self.status == TourRequest.REQUESTED
 
     def is_started(self):
-        return self.status == STARTED
+        return self.status == TourRequest.STARTED
     
     def claim_tour(self):
-        if self.status == CLAIMED:
-            raise ValueError("Tour already claimed")
-        if self.status == STARTED:
-            raise ValueError("Tour already startdd")
+        if self.status == TourRequest.CLAIMED:
+            raise ValueError("Latest tour already claimed")
+        if self.status == TourRequest.STARTED:
+            raise ValueError("Latest tour already started")
         self.claim_time = datetime.now()
-        self.status = CLAIMED
+        self.status = TourRequest.CLAIMED
         self.save()
 
     def start_tour(self):
-        if self.status == REQUESTED:
+        if self.status == TourRequest.REQUESTED:
             self.claime_time = datetime.now()
-        if self.status == STARTED:
-            raise ValueError("Tour already startdd")
+        if self.status == TourRequest.STARTED:
+            raise ValueError("Latest tour request already started")
         self.start_time = datetime.now()
-        self.status = STARTED
+        self.status = TourRequest.STARTED
         self.save()
