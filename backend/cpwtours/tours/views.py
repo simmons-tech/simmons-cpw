@@ -1,9 +1,8 @@
-from datetime import datetime
 import json
+from django.utils import timezone
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.forms.models import model_to_dict
 from django.core.serializers.json import DjangoJSONEncoder
 
 
@@ -28,7 +27,7 @@ def info(request):
 
     response_data = {}
     response_data['num_requests'] = num_requests
-    response_data['latest_request'] = model_to_dict(latest_request) if latest_request else None
+    response_data['latest_request'] = latest_request.to_json() if latest_request else None
     return json_response(response_data)
 
 def request_tour(request):
@@ -39,7 +38,7 @@ def request_tour(request):
         message = "Last tour hasn't started yet!"
         new_request = None
     else:
-        new_request = TourRequest(request_time = datetime.now())
+        new_request = TourRequest(request_time = timezone.now())
         new_request.save()
         success = True
         message = "Tour successfully requested"
@@ -47,7 +46,7 @@ def request_tour(request):
     response_data = {}
     response_data['success'] = success
     response_data['message'] = message
-    response_data['new_request'] =  model_to_dict(new_request) if new_request else None
+    response_data['new_request'] =  new_request.to_json() if new_request else None
     return json_response(response_data)    
 
 def claim_tour(request):
@@ -69,7 +68,7 @@ def claim_tour(request):
     response_data = {}
     response_data['success'] = success
     response_data['message'] = message
-    response_data['latest_request'] =  model_to_dict(latest_request) if latest_request else None
+    response_data['latest_request'] =  latest_request.to_json() if latest_request else None
     return json_response(response_data)        
 
 def start_tour(request):
@@ -91,6 +90,6 @@ def start_tour(request):
     response_data = {}
     response_data['success'] = success
     response_data['message'] = message
-    response_data['latest_request'] =  model_to_dict(latest_request) if latest_request else None
+    response_data['latest_request'] =  latest_request.to_json() if latest_request else None
     return json_response(response_data)
 
