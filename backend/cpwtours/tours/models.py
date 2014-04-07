@@ -18,12 +18,15 @@ class TourRequest(models.Model):
                               default = REQUESTED)
 
     request_time = models.DateTimeField(auto_now_add=True)
-    claim_time = models.DateTimeField(blank=True)
-    start_time = models.DateTimeField(blank=True)
+    claim_time = models.DateTimeField(blank=True, null = True, default = None)
+    start_time = models.DateTimeField(blank=True, null = True, default = None)
     
     def is_unclaimed(self):
         return self.status == REQUESTED
 
+    def is_started(self):
+        return self.status == STARTED
+    
     def claim_tour(self):
         if self.status == CLAIMED:
             raise ValueError("Tour already claimed")
