@@ -60,3 +60,6 @@ docs/_build/
 
 # Local Settings
 local_settings.py
+
+# Database files
+db.dat

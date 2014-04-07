@@ -13,7 +13,7 @@ class TourRequest(models.Model):
         (STARTED, 'Started'),
     )
     
-    status = models.CharField(max_length = 1
+    status = models.CharField(max_length = 1,
                               choices = STATUS_CHOICES,
                               default = REQUESTED)
 
