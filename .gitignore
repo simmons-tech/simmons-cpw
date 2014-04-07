@@ -52,3 +52,11 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Mac files
+.DS_Store
+
+# Temp files
+*~
+
+# Local Settings
+local_settings.py
