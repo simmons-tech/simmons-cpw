@@ -37,6 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Our apps
+    'tours',
+    
     # Migrations
     'south',
 )
