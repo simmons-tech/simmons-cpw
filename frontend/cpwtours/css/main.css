@@ -172,9 +172,7 @@ body {
 }
 
 .error-msg {
+    font-size: 13px;
+    font-weight: bold;
     color: #a94442;
-}
-
-.hidden {
-    display: none;
 }

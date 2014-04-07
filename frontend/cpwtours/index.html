@@ -24,8 +24,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-      
-    <meta http-equiv="refresh" content="60" >
   </head>
 
   <body>
@@ -49,14 +47,14 @@
             </div>
             <div id='no-requests' class="hidden">
                 <p class="lead">There are no active tour requests at this time.</p>
-                <p class="lead info-text">Latest tour start time: <span id='latest_start_time' class='time-span'>10:30pm</span></p>                
-                <p id='request_tour_btn' class="lead">
-                  <a href="javascript:;" class="btn btn-lg btn-info">Request Tour</a>
+                <p class="lead info-text" id="last-start-time">Latest tour start time: <span id='latest_start_time' class='time-span'>????</span></p>                
+                <p class="lead">
+                  <a id='request_tour_btn' href="javascript:;" class="btn btn-lg btn-info">Request Tour</a>
                 </p>
             </div>
             <div id='unclaimed-request' class="hidden">
                 <p class="lead">Someone requested a tour!</p>
-                <p class="lead info-text">Request Time: <span id='unclaimed_request_time' class='time-span'>10:30pm</span></p>
+                <p class="lead info-text">Request Time: <span id='unclaimed_request_time' class='time-span'>????</span></p>
                 <p class="lead">
                   <a id='unclaimed_claim_tour_btn' href="javascript:;" class="btn btn-lg btn-primary">Claim Tour</a>
                 </p>
@@ -66,8 +64,8 @@
             </div>
             <div id='unstarted-request' class="hidden">
                 <p class="lead">A tour is claimed, but hasn't started!</p>
-                <p class="lead info-text">Request Time: <span id='unstarted_request_time' class='time-span'>10:30pm</span></p>
-                <p class="lead info-text">Claim Time: <span id='unstarted_claim_time' class='time-span'>10:30pm</span></p>
+                <p class="lead info-text">Request Time: <span id='unstarted_request_time' class='time-span'>????</span></p>
+                <p class="lead info-text">Claim Time: <span id='unstarted_claim_time' class='time-span'>????</span></p>
                 <p class="lead">
                   <a id='unstarted_start_tour_btn' href="javascript:;" class="btn btn-lg btn-success">Start Tour</a>
                 </p>
@@ -80,7 +78,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Simmons Hall - CPW 2014</p>
+              <p>Simmons Hall - Tour # <span id='num-tours'></span> - CPW 2014</p>
             </div>
           </div>
 
