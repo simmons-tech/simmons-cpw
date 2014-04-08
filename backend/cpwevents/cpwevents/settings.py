@@ -36,6 +36,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Our Events App
+    'events',
+
+    # DB Migrations
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
