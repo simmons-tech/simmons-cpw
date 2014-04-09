@@ -13,13 +13,15 @@ class CpwEvent(models.Model):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
 
-    def date_str(self, dt):
+    @staticmethod
+    def date_str(dt):
         if not dt:
             return None
         return timezone.localtime(dt).strftime("%A, %B %d")
 
 
-    def time_str(self, dt):
+    @staticmethod
+    def time_str(dt):
         if not dt:
             return None
         return timezone.localtime(dt).strftime("%I:%M%p")
@@ -31,9 +33,9 @@ class CpwEvent(models.Model):
         response_data['description'] = self.description
         response_data['short_description'] = self.short_description        
 
-        response_data['day'] = self.date_str(self.start_time)        
-        response_data['start_time'] = self.time_str(self.start_time)
-        response_data['end_time'] = self.time_str(self.end_time)
+        response_data['day'] = CpwEvent.date_str(self.start_time)        
+        response_data['start_time'] = CpwEvent.time_str(self.start_time)
+        response_data['end_time'] = CpwEvent.time_str(self.end_time)
         response_data['id'] = self.id
         return response_data
 
