@@ -46,15 +46,6 @@ $(document).ready(function() {
     };
     
     
-    $("#tours-icon").click(function() {
-        if (tourRequested) {
-            startTour();
-        } else {
-            requestTour();            
-        }
-    });
-    
-
     // Display error message in red.
     var displayError = function(msg) {
 	   errorP.text(msg);
@@ -88,7 +79,7 @@ $(document).ready(function() {
     var updateEventsDisplay = function(json) {
         $("#event-wrapper").html("");
         $("#now").html(json['now_date'] +' &nbsp;&nbsp;&nbsp; ' + json['now_time']);
-        
+	
         if (json['happening_now'].length > 0) {
             $("#happening-text").text("Happening now:");
             for (var i = 0; i < json['happening_now'].length; i++) {
@@ -119,7 +110,5 @@ $(document).ready(function() {
     }
     
     loadEvents();
-    loadTours();
-    setInterval(loadTours, 5*1000)
     setInterval(loadEvents, 30*1000)
 });
