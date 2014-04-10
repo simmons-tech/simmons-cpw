@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>DeskMonitor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Custom styles for this template -->
+<link href="css/main.css" rel="stylesheet">    
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- Save for Web Slices (DeskMonitor.psd) -->
+<img src="images/DeskMonitor.png" width="1920" height="1080" alt="">
+<!-- End Save for Web Slices -->
+
+<!-- Controller -->
+
+<div id="controller">
+    <img id='controller-0' src="images/Controller-0.png"  class="hidden"/>
+    <img id='controller-1' src="images/Controller-1.png"  class="hidden"/>
+    <img id='controller-2' src="images/Controller-2.png"  class="hidden"/>
+    <img id='ask-desk' src="images/Controller-4.png"  class=""/>
+    <img id='tour-requested' src="images/Controller-3.png"  class="hidden"/>
+</div>
+    
+<div id="tours-info">
+    <span id='tour-top-text'>
+    Stop by our front desk to request a tour!
+    </span>
+    <br /><br />
+    <span class="tour-status">
+    </span>
+</div>
+    
+<div id="tours-instr">
+</div>
+    
+    
+<!-- Schedule -->
+<div id="schedule">
+<div class="happening">
+    <span id='happening-text'></span>
+</div>
+<div class="event-wrapper" id='event-wrapper'>
+    </div>
+    
+</div>
+    
+<div id='error-msg'>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/underscore.js"></script>    
+    <script src="js/events.js"></script>    
+</body>
+<script type="text/template" id="event-template">
+<div class="event">    
+<div class="title">
+<%= title %>
+</div>
+<div class="info-row">
+<span class="time">
+<%= start_time %> - <%= end_time %>
+</span> &mdash; 
+<span class="location">
+<%= location %>
+</span>
+</div>    
+<div class="description">
+<%= description %>
+</div>
+</div>
+</script>
+</html>
