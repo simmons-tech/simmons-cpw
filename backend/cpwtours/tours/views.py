@@ -43,8 +43,8 @@ def send_start_email(started_request):
 
 def send_email_message(subject, message):
     from_email = "Simmons Tours Website <simmons-tech@mit.edu>"
-#    to_emails = ["simmons-cpw-tours-automated-2014@mit.edu"]
-    to_emails = ["larsj@mit.edu"]
+    to_emails = ["simmons-cpw-tours-2014@mit.edu"]
+#    to_emails = ["larsj@mit.edu"]
     send_mail(subject, message, from_email, to_emails, fail_silently=False)
 
 # Views
