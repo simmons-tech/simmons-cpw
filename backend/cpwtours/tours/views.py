@@ -90,7 +90,7 @@ def claim_tour(request):
             latest_request.claim_tour()
             success = True
             message = "Tour successfully claimed"
-            send_claim_email(latest_request)
+#            send_claim_email(latest_request)
         except ValueError as e:
             success = False
             message = "Error: " + str(e)
@@ -111,7 +111,7 @@ def start_tour(request):
     else:
         try:
             latest_request.start_tour()
-            send_start_email(latest_request)
+#            send_start_email(latest_request)
             success = True
             message = "Tour successfully started"
         except ValueError as e:
