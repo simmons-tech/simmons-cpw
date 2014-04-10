@@ -104,3 +104,13 @@ body {
 .requested {
     color:rgb(1, 145, 0);
 }
+
+#now {
+    position:absolute;
+    left:1375px;
+    top:45px;
+    font-size:30px;
+    font-weight:600;
+    text-align:right;
+    width:500px;
+}

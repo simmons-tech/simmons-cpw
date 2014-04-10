@@ -87,6 +87,8 @@ $(document).ready(function() {
     }
     var updateEventsDisplay = function(json) {
         $("#event-wrapper").html("");
+        $("#now").html(json['now_date'] +' &nbsp;&nbsp;&nbsp; ' + json['now_time']);
+        
         if (json['happening_now'].length > 0) {
             $("#happening-text").text("Happening now:");
             for (var i = 0; i < json['happening_now'].length; i++) {
