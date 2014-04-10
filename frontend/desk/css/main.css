@@ -1,0 +1,106 @@
+body {
+    font-family: "Myriad Pro", sans-serif
+}
+
+#schedule {
+    position:absolute;
+    left:100px;
+    top:410px;
+    width: 950px;
+}
+
+.happening {
+    font-weight: 100;
+    font-size: 60px;
+}
+
+.event {
+    float:left;
+    position:relative;
+    left:60px;
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+}
+
+.event-wrapper {
+    position:relative;
+}
+
+.title {
+    font-weight:900;
+    font-size: 50px;
+    
+}
+
+.description {
+    margin-top: 20px;
+    font-weight:100;
+    font-size: 35px;
+}
+
+.info-row {
+    font-size: 30px;    
+}
+
+#controller {
+    position:absolute;
+    left:1325;
+    top:530;
+}
+
+#controller-images {
+    position:relative;
+}
+
+.hidden {
+    display:none;
+}
+
+#controller img {
+    position:absolute;
+}
+
+#tours-info {
+    font-weight:100;
+    position:absolute;
+    left: 1280px;
+    top: 360px;
+    text-align:center;
+    width: 550px;
+    font-size:32px;
+}
+
+.tour-status {
+    font-size:25px;
+}
+
+
+
+.statustype {
+    font-weight:500;
+}
+
+#tours-instr {
+    z-index:1;
+    font-weight:100;
+    position:absolute;
+    left: 1380px;
+    top:950px;
+    text-align:center;
+    width: 400px;
+    font-size:20px;    
+}
+
+#error {
+    position:absolute;
+    color:red;
+    text-align:center;
+    left:100px;
+    top:990px;
+    width: 950px;
+}
+
+.requested {
+    color:rgb(1, 145, 0);
+}
