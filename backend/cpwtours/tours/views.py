@@ -43,8 +43,8 @@ def send_start_email(started_request):
 
 def send_email_message(subject, message):
     from_email = "Simmons Tours Website <simmons-tech@mit.edu>"
-#    to_emails = ["simmons-cpw-tours-automated-2014@mit.edu"]
-    to_emails = ["larsj@mit.edu"]
+    to_emails = ["simmons-cpw-tours-2014@mit.edu"]
+#    to_emails = ["larsj@mit.edu"]
     send_mail(subject, message, from_email, to_emails, fail_silently=False)
 
 # Views
@@ -90,7 +90,7 @@ def claim_tour(request):
             latest_request.claim_tour()
             success = True
             message = "Tour successfully claimed"
-            send_claim_email(latest_request)
+#            send_claim_email(latest_request)
         except ValueError as e:
             success = False
             message = "Error: " + str(e)
@@ -111,7 +111,7 @@ def start_tour(request):
     else:
         try:
             latest_request.start_tour()
-            send_start_email(latest_request)
+#            send_start_email(latest_request)
             success = True
             message = "Tour successfully started"
         except ValueError as e:
