@@ -12,7 +12,8 @@ body {
 
 #schedule {
     position:absolute;
-    left:100px;
+    text-align: left;
+    left:113px;
     top:410px;
     width: 950px;
 }
