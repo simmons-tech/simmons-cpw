@@ -1,5 +1,13 @@
 body {
-    font-family: "Myriad Pro", sans-serif
+    font-family: "Myriad Pro", sans-serif;
+    margin: auto;
+    text-align: center;
+    background-color: #eee;
+}
+
+.bgimg {
+    width: auto;
+    height: 100%;
 }
 
 #schedule {
@@ -30,7 +38,6 @@ body {
 .title {
     font-weight:900;
     font-size: 50px;
-    
 }
 
 .description {
@@ -40,7 +47,7 @@ body {
 }
 
 .info-row {
-    font-size: 30px;    
+    font-size: 30px;
 }
 
 #controller {
@@ -89,7 +96,7 @@ body {
     top:950px;
     text-align:center;
     width: 400px;
-    font-size:20px;    
+    font-size:20px;
 }
 
 #error {
