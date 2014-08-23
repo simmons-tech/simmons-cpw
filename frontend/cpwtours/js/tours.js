@@ -1,8 +1,8 @@
-var BASE_URL = "/cpw/backend/cpwtours/tours"
-var INFO_URL = BASE_URL + "/info"
-var REQUEST_URL = BASE_URL + "/request"
-var CLAIM_URL = BASE_URL + "/claim"
-var START_URL = BASE_URL + "/start"
+var BASE_URL = "/frosh/backend/cpwtours/tours";
+var INFO_URL = BASE_URL + "/info";
+var REQUEST_URL = BASE_URL + "/request";
+var CLAIM_URL = BASE_URL + "/claim";
+var START_URL = BASE_URL + "/start";
 
 var REQUESTED = "R";
 var CLAIMED = "C";
@@ -13,7 +13,7 @@ $(document).ready(function() {
     var tourNumSpans = $('.tour-num');
 
     // Four "states" of the page
-    var noDataDiv = $('#no-data');    
+    var noDataDiv = $('#no-data');
     var noRequestsDiv = $('#no-requests');
     var unclaimedDiv = $('#unclaimed-request');
     var unstartedDiv = $('#unstarted-request');
@@ -77,7 +77,7 @@ $(document).ready(function() {
 	var latest_request = json['latest_request'];
 	var numRequests = json['num_requests']
 
-	noDataDiv.addClass("hidden");	
+	noDataDiv.addClass("hidden");
 	noRequestsDiv.addClass("hidden");
 	unclaimedDiv.addClass("hidden");
 	unstartedDiv.addClass("hidden");
@@ -91,17 +91,17 @@ $(document).ready(function() {
 	    // This will be tour (num_so_far + 1)
 	    numRequests += 1;
 	} else if (latest_request['status'] == REQUESTED) {
-	    $('#unclaimed_request_time').text(latest_request['request_time']);	    
-	    unclaimedDiv.removeClass("hidden");	    
+	    $('#unclaimed_request_time').text(latest_request['request_time']);
+	    unclaimedDiv.removeClass("hidden");
 	} else if (latest_request['status'] == CLAIMED) {
 	    $('#unstarted_request_time').text(latest_request['request_time']);
-	    $('#unstarted_claim_time').text(latest_request['claim_time']);	    	    	    
-	    unstartedDiv.removeClass("hidden");	    	    
+	    $('#unstarted_claim_time').text(latest_request['claim_time']);
+	    unstartedDiv.removeClass("hidden");
 	}
-	
+
 	tourNumSpans.text(numRequests);
     }
-    
+
     var loadData = function() {
         $.getJSON(INFO_URL)
         .done(function(json) {
@@ -109,7 +109,7 @@ $(document).ready(function() {
         })
 	.fail(showGetJsonError);
     }
-    
+
     var initApp = function() {
         loadData();
     }

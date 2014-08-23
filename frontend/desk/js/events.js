@@ -1,7 +1,7 @@
-var TOUR_REQUEST_URL = "http://simmons-hall.scripts.mit.edu/cpw/backend/cpwtours/tours/request"
-var TOUR_START_URL = "http://simmons-hall.scripts.mit.edu/cpw/backend/cpwtours/tours/start"
-var INFO_URL = "http://simmons-hall.scripts.mit.edu/cpw/backend/cpwtours/tours/info"
-var EVENT_URL = "http://simmons-hall.scripts.mit.edu/cpw/backend/cpwevents/events"
+var TOUR_REQUEST_URL = "http://simmons-hall.scripts.mit.edu/frosh/backend/cpwtours/tours/request"
+var TOUR_START_URL = "http://simmons-hall.scripts.mit.edu/frosh/backend/cpwtours/tours/start"
+var INFO_URL = "http://simmons-hall.scripts.mit.edu/frosh/backend/cpwtours/tours/info"
+var EVENT_URL = "http://simmons-hall.scripts.mit.edu/frosh/backend/cpwevents/events"
 
 var REQUESTED = "R";
 var CLAIMED = "C";
@@ -10,7 +10,7 @@ var STARTED = "S";
 $(document).ready(function() {
     var eventTemplate = _.template($("#event-template").html());
     var tourRequested = false;
-    
+
     var errorP = $('#error-msg');
 
     // Handle AJAX JSON Responses
@@ -40,20 +40,20 @@ $(document).ready(function() {
     var requestTour = function() {
 	   sendTourRequest(TOUR_REQUEST_URL);
     };
-    
+
     var startTour = function() {
 	   sendTourRequest(TOUR_START_URL);
     };
-    
-    
+
+
     $("#tours-icon").click(function() {
         if (tourRequested) {
             startTour();
         } else {
-            requestTour();            
+            requestTour();
         }
     });
-    
+
 
     // Display error message in red.
     var displayError = function(msg) {
@@ -64,7 +64,7 @@ $(document).ready(function() {
         displayError("");
         var latest_request = json['latest_request'];
         var numRequests = json['num_requests']
-    
+
         if (!latest_request || latest_request['status'] == STARTED) {
             $("#tour-status-text").text("Last tour started:");
             $("#tour-time").text(latest_request['start_time']);
@@ -75,20 +75,20 @@ $(document).ready(function() {
             $("#tour-status-text").text("Tour requested:");
             $("#tour-time").text(latest_request['request_time']);
             $("#tour-requested").removeClass("hidden");
-            $("#tour-top-text").text("Thanks for requeting a tour! Feel free to wait in our mailbox lounge.");            
+            $("#tour-top-text").text("Thanks for requeting a tour! Feel free to wait in our mailbox lounge.");
             tourRequested = true;
         } else if (latest_request['status'] == CLAIMED) {
             $("#tour-status-text").text("Tour claimed:");
-            $("#tour-time").text(latest_request['claim_time']);	
+            $("#tour-time").text(latest_request['claim_time']);
             $("#tour-requested").removeClass("hidden");
-            $("#tour-top-text").text("Your request has been claimed by a guide. We'll leave shortly.");            
-            tourRequested = true;            
+            $("#tour-top-text").text("Your request has been claimed by a guide. We'll leave shortly.");
+            tourRequested = true;
         }
     }
     var updateEventsDisplay = function(json) {
         $("#event-wrapper").html("");
         $("#now").html(json['now_date'] +' &nbsp;&nbsp;&nbsp; ' + json['now_time']);
-        
+
         if (json['happening_now'].length > 0) {
             $("#happening-text").text("Happening now:");
             for (var i = 0; i < json['happening_now'].length; i++) {
@@ -96,13 +96,13 @@ $(document).ready(function() {
             }
         } else if (json['upcoming'].length > 0) {
             $("#happening-text").text("Starting soon:");
-            $("#event-wrapper").append(eventTemplate(json['upcoming'][0]));        
-            $("#event-wrapper").append(eventTemplate(json['upcoming'][1]));        
+            $("#event-wrapper").append(eventTemplate(json['upcoming'][0]));
+            $("#event-wrapper").append(eventTemplate(json['upcoming'][1]));
         } else {
-            $("#happening-text").text("That's all! See you in the fall");            
+            $("#happening-text").text("That's all! See you in the fall");
         }
     }
-    
+
     var loadEvents = function() {
         $.getJSON(EVENT_URL)
         .done(function(json) {
@@ -110,14 +110,14 @@ $(document).ready(function() {
         })
 	   .fail(showGetJsonError);
     }
-    var loadTours = function() {        
+    var loadTours = function() {
         $.getJSON(INFO_URL)
         .done(function(json) {
 	    updateToursDisplay(json);
         })
 	   .fail(showGetJsonError);
     }
-    
+
     loadEvents();
     loadTours();
     setInterval(loadTours, 5*1000)

@@ -25,26 +25,26 @@ def request_count():
 
 def send_request_email(new_request):
     request_time = new_request.time_to_str(new_request.request_time)
-    subject =  "[CPW Tours] Tour #%s Requested" % str(request_count())
-    message = "A tour was requested at [%s]. Go to http://simmons-hall.scripts.mit.edu/cpw/tours to claim." % request_time
+    subject =  "[Simmons Tours] Tour #%s Requested" % str(request_count())
+    message = "A tour was requested at [%s]. Go to http://simmons-hall.scripts.mit.edu/frosh/tours to claim." % request_time
     send_email_message(subject, message)
 
 def send_claim_email(claimed_request):
     request_time = claimed_request.time_to_str(claimed_request.request_time)
-    subject =  "[CPW Tours] Tour #%s Claimed" % str(request_count())
-    message =  "The [%s] tour request was claimed. Go to http://simmons-hall.scripts.mit.edu/cpw/tours to view status." % request_time
+    subject =  "[Simmons Tours] Tour #%s Claimed" % str(request_count())
+    message =  "The [%s] tour request was claimed. Go to http://simmons-hall.scripts.mit.edu/frosh/tours to view status." % request_time
     send_email_message(subject, message)
-    
+
 def send_start_email(started_request):
     request_time = started_request.time_to_str(started_request.request_time)
-    subject =  "[CPW Tours] Tour #%s Started" % str(request_count())
-    message =  "The  [%s] tour request started. Go to http://simmons-hall.scripts.mit.edu/cpw/tours to view status." % request_time
+    subject =  "[Simmons Tours] Tour #%s Started" % str(request_count())
+    message =  "The  [%s] tour request started. Go to http://simmons-hall.scripts.mit.edu/frosh/tours to view status." % request_time
     send_email_message(subject, message)
 
 def send_email_message(subject, message):
     from_email = "Simmons Tours Website <simmons-tech@mit.edu>"
-#    to_emails = ["simmons-cpw-tours-2014@mit.edu"]
-    to_emails = ["larsj@mit.edu"]
+    to_emails = ["simmons-frosh-tours@mit.edu"]
+#    to_emails = ["larsj@mit.edu"]
     send_mail(subject, message, from_email, to_emails, fail_silently=False)
 
 # Views
@@ -71,12 +71,12 @@ def request_tour(request):
         send_request_email(new_request)
         success = True
         message = "Tour successfully requested"
-        
+
     response_data = {}
     response_data['success'] = success
     response_data['message'] = message
     response_data['new_request'] =  new_request.to_json() if new_request else None
-    return json_response(response_data)    
+    return json_response(response_data)
 
 def claim_tour(request):
     latest_request = get_latest_request()
@@ -99,7 +99,7 @@ def claim_tour(request):
     response_data['success'] = success
     response_data['message'] = message
     response_data['latest_request'] =  latest_request.to_json() if latest_request else None
-    return json_response(response_data)        
+    return json_response(response_data)
 
 def start_tour(request):
     latest_request = get_latest_request()
