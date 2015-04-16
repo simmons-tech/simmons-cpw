@@ -54,7 +54,7 @@ class TourRequest(models.Model):
         response_data = {}
         response_data['status'] = self.status
         response_data['request_time'] = self.time_to_str(self.request_time)
-        response_data['claim_time'] = self.time_to_str(self.request_time)
+        response_data['claim_time'] = self.time_to_str(self.claim_time)
         response_data['start_time'] = self.time_to_str(self.start_time)
         response_data['id'] = self.id
         return response_data
